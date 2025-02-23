@@ -5,24 +5,25 @@ Single-cell RNA sequencing (scRNA-seq) has transformed our understanding of indi
 ![Overview.png](Overview.png)
 
 ## Requirements
-All experiments were conducted on an NVIDIA RTX 3090 GPU. Before running HISTEX, you need to create a conda environment and install the required packages:
+All experiments were conducted on an NVIDIA RTX 3090 GPU. Before running TriHRGE, you need to create a conda environment and install the required packages:
 ```shell
-conda create -n HISTEX python==3.11.5
-conda activate HISTEX
+conda create -n HISTEX python==3.10.15
+conda activate TriHRGE
 pip install -r requirements.txt
 ```
 
 ## Data
-The Xenium human breast cancer datasets: [https://www.10xgenomics.com/products/xenium-in-situ/preview-dataset-human-breast](https://www.10xgenomics.com/products/xenium-in-situ/preview-dataset-human-breast).
+DLPFC dataset consists of 12 sections of the dorsolateral prefrontal cortex (DLPFC) sampled from three individuals. The number of spots for each section ranges from 3498 to 4789. The original authors have manually annotated the areas of the DLPFC layers and white matter. The datasets are available in the spatialLIBD package from [http://spatial.libd.org/spatialLIBD](http://spatial.libd.org/spatialLIBD).
 
-The Visium HD human breast cancer: [https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-human-breast-cancer-fresh-frozen](https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-human-breast-cancer-fresh-frozen).
+MouseBrain dataset includes a coronal brain section sample from an adult mouse, with 2903 sampled spots. The datasets are available in [https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_web_summary.html](https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_web_summary.html).
 
-The Visium HD mouse brain: [https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-mouse-brain-fresh-frozen](https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-mouse-brain-fresh-frozen).
+Human Breast Cancer1 (BC1) dataset includes a fresh frozen invasive ductal carcinoma breast tissue section sample, with 3813 sampled spots. The datasets are available in [https://www.10xgenomics.com/datasets/human-breast-cancer-block-a-section-1-1-standard-1-0-0](https://www.10xgenomics.com/datasets/human-breast-cancer-block-a-section-1-1-standard-1-0-0).
 
-The HER2-positive breast cancer datasets: [https://github.com/almaan/her2st](https://github.com/almaan/her2st).
+Human Breast Cancer2 (BC2) dataset includes a formalin-fixed invasive breast carcinoma tissue section sample, with 2518 sampled spots. The datasets are available in [https://www.10xgenomics.com/datasets/human-breast-cancer-ductal-carcinoma-in-situ-invasive-carcinoma-ffpe-1-standard-1-3-0](https://www.10xgenomics.com/datasets/human-breast-cancer-ductal-carcinoma-in-situ-invasive-carcinoma-ffpe-1-standard-1-3-0)
+
 
 ## Pre-trained general-purpose foundation mode
-Given the outstanding performance of large pre-trained general-purpose foundation models in clinical tasks, we use UNI as the backbone feature extractor. Before using HISTEX, you need to apply to UNI for permission to access the model weights: [https://huggingface.co/mahmoodlab/UNI](https://huggingface.co/mahmoodlab/UNI).
+Given the outstanding performance of large pre-trained general-purpose foundation models in clinical tasks, we use UNI as the backbone feature extractor. Before using TriHRGE, you need to apply to UNI for permission to access the model weights: [https://huggingface.co/mahmoodlab/UNI](https://huggingface.co/mahmoodlab/UNI).
 
 ## Training and Inferring
 - First, histology image and location information are normalized by running [`image_calibration.py`](image_calibration.py).
